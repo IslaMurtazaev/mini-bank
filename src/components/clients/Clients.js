@@ -5,6 +5,8 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 
+import Spinner from "../common/Spinner";
+
 class Clients extends Component {
   static propTypes = {
     firestore: PropTypes.object.isRequired,
@@ -55,7 +57,7 @@ class Clients extends Component {
         </div>
       );
     } else {
-      return <h1>Loading..</h1>;
+      return <Spinner />;
     }
   }
 }
