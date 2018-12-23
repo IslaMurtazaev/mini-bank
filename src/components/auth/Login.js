@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-// import { compose } from "redux";
-// import { connect } from "react-redux";
+import { compose } from "redux";
+import { connect } from "react-redux";
 import { firebaseConnect } from "react-redux-firebase";
+import { notifyUser, removeMessage } from "../../actions/notifyActions";
+import Alert from "../common/Alert";
 
 class Login extends Component {
   static propTypes = {
@@ -20,21 +22,26 @@ class Login extends Component {
     e.preventDefault();
 
     const { email, password } = this.state;
-    const { firebase, history } = this.props;
+    const { firebase, history, notifyUser, removeMessage } = this.props;
 
     firebase
       .login({
         email,
         password
       })
-      .then(history.push("/"))
-      .catch(err => alert("Invalid credentials"));
+      .then(() => {
+        removeMessage();
+        history.push("/");
+      })
+      .catch(err => notifyUser("Wrong credentials", "error"));
   };
 
   render() {
+    const { message, messageType } = this.props.notify;
+
     return (
       <div className="row">
-        <div className="com-md-6 mx-auto">
+        <div className="col-md-4 mx-auto">
           <div className="card">
             <div className="card-body">
               <h1 className="text-center pb-4 pt-3">
@@ -43,12 +50,13 @@ class Login extends Component {
                   &nbsp;Login
                 </span>
               </h1>
+              {message && <Alert message={message} messageType={messageType} />}
               <form onSubmit={this.onSubmit}>
                 <div className="form-group">
                   <label htmlFor="email">Email</label>
                   <input
                     type="email"
-                    className="form-control"
+                    className="form-control mb-3"
                     name="email"
                     required
                     value={this.state.email}
@@ -80,4 +88,12 @@ class Login extends Component {
   }
 }
 
-export default firebaseConnect()(Login);
+export default compose(
+  firebaseConnect(),
+  connect(
+    (state, props) => ({
+      notify: state.notify
+    }),
+    { notifyUser, removeMessage }
+  )
+)(Login);
