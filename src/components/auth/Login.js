@@ -20,14 +20,14 @@ class Login extends Component {
     e.preventDefault();
 
     const { email, password } = this.state;
-    const { firebase } = this.props;
+    const { firebase, history } = this.props;
 
-    console.log(this.state);
     firebase
       .login({
         email,
         password
       })
+      .then(history.push("/"))
       .catch(err => alert("Invalid credentials"));
   };
 
