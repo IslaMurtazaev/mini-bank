@@ -32,9 +32,7 @@ class AddClient extends Component {
     const newClient = this.state;
     newClient.balance = newClient.balance ? +newClient.balance : 0;
 
-    firestore
-      .add({ collection: "clients" }, newClient)
-      .then(() => history.push("/"));
+    firestore.add({ collection: "clients" }, newClient).then(history.push("/"));
   };
 
   render() {
