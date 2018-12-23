@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import "./App.css";
+import "./assets/App.css"
 
 import { UserIsAuthenticated, UserIsNotAuthenticated } from "./helpers/auth";
 import AppNavbar from "./components/layout/AppNavbar";
@@ -9,6 +9,7 @@ import AddClient from "./components/clients/AddClient";
 import EditClient from "./components/clients/EditClient";
 import ClientDetails from "./components/clients/ClientDetails";
 import Login from "./components/auth/Login";
+import NotFound from "./components/common/NotFound";
 
 class App extends Component {
   render() {
@@ -23,6 +24,7 @@ class App extends Component {
               <Route exact path="/client/:id" component={UserIsAuthenticated(ClientDetails)} />
               <Route exact path="/client/edit/:id" component={UserIsAuthenticated(EditClient)} />
               <Route exact path="/login" component={UserIsNotAuthenticated(Login)} />
+              <Route path="*" component={NotFound} />
             </Switch>
           </div>
         </div>

@@ -1,0 +1,12 @@
+.spinner {
+  width: 200px;
+  margin: auto;
+  display: block;
+}
+
+.not-found {
+  background-color: #35B992;
+  width: 50%;
+  margin: auto;
+  display: block;
+}
