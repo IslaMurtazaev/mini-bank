@@ -4,11 +4,13 @@ import "./assets/App.css"
 
 import { UserIsAuthenticated, UserIsNotAuthenticated } from "./helpers/auth";
 import AppNavbar from "./components/layout/AppNavbar";
+import Footer from "./components/layout/Footer";
 import Dashboard from "./components/layout/Dashboard";
 import AddClient from "./components/clients/AddClient";
 import EditClient from "./components/clients/EditClient";
 import ClientDetails from "./components/clients/ClientDetails";
 import Login from "./components/auth/Login";
+import About from "./components/layout/About";
 import NotFound from "./components/common/NotFound";
 
 class App extends Component {
@@ -24,9 +26,11 @@ class App extends Component {
               <Route exact path="/client/:id" component={UserIsAuthenticated(ClientDetails)} />
               <Route exact path="/client/edit/:id" component={UserIsAuthenticated(EditClient)} />
               <Route exact path="/login" component={UserIsNotAuthenticated(Login)} />
+              <Route exact path="/about" component={About} />
               <Route path="*" component={NotFound} />
             </Switch>
           </div>
+          <Footer />
         </div>
       </Router>
     );
