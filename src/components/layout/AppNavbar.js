@@ -56,6 +56,11 @@ class AppNavbar extends Component {
                   </Link>
                 </li>
               )}
+              <li className="nav-item">
+                <Link to="/about" className="nav-link">
+                  About
+                </Link>
+              </li>
             </ul>
             {isAuthenticated && (
               <ul className="navbar-nav ml-auto">

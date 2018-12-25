@@ -1,13 +1,21 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const About = () => {
   return (
     <div className="row">
+      <div>
+        <div className="col-md-6">
+          <Link to="/" className="btn btn-link">
+            <i className="fas fa-arrow-circle-left" /> Back to Dashboard{" "}
+          </Link>
+        </div>
+      </div>
       <div className="col-md-10 mx-auto jumbotron">
         <h1 className="primary-text text-center">About</h1>
         <h6 className="secondary-text text-center mb-4">
-          Project of <strong>CS 203: Intro to Web Technologies</strong>. Computer Science
-          department, AIU.
+          Project of <strong>CS 203: Intro to Web Technologies</strong>.
+          Computer Science department, AIU.
         </h6>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ac
@@ -23,9 +31,7 @@ const About = () => {
           rhoncus, ultricies lorem sit amet, tincidunt libero. Vivamus et
           aliquet nunc. Aenean pellentesque porta sapien nec feugiat.
         </p>
-        <p>
-            Stack of technologies: React, Bootstrap, Firebase, Firestore.
-        </p>
+        <p>Stack of technologies: React, Bootstrap, Firebase, Firestore.</p>
       </div>
     </div>
   );
