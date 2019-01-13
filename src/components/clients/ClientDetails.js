@@ -8,7 +8,6 @@ import Spinner from "../common/Spinner";
 class ClientDetails extends Component {
   static propTypes = {
     client: PropTypes.object,
-    history: PropTypes.object.isRequired,
     firestore: PropTypes.object.isRequired
   };
 

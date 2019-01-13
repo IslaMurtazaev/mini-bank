@@ -16,7 +16,6 @@ class EditClient extends Component {
 
   static propTypes = {
     firestore: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired,
     disableBalanceOnEdit: PropTypes.bool.isRequired,
     client: PropTypes.object
   };

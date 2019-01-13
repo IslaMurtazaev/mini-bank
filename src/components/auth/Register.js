@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Alert from "../common/Alert";
 
-class Login extends Component {
+class Register extends Component {
   static propTypes = {
     firebase: PropTypes.shape({
       login: PropTypes.func.isRequired
@@ -11,8 +11,9 @@ class Login extends Component {
       notifyUser: PropTypes.func.isRequired,
       removeMessage: PropTypes.func.isRequired
     }).isRequired,
+    allowRegistration: PropTypes.bool.isRequired,
     message: PropTypes.string,
-    messageType: PropTypes.string
+    messageType: PropTypes.string,
   };
 
   state = {
@@ -29,17 +30,21 @@ class Login extends Component {
     const { firebase, history, actions } = this.props;
 
     firebase
-      .login({ email, password })
+      .createUser({ email, password })
       .then(() => {
         actions.removeMessage();
         history.push("/");
       })
-      .catch(err => actions.notifyUser("Wrong Credentials", "error"));
+      .catch(err => actions.notifyUser("Such User Already Exists", "error"));
   };
 
   componentWillMount() {
-    if (this.props.message) {
-      this.props.actions.removeMessage();
+    const { history, message, allowRegistration, actions } = this.props;
+
+    if (!allowRegistration) {
+      history.push("/login")
+    } else if (message) {
+      actions.removeMessage();
     }
   }
 
@@ -54,7 +59,7 @@ class Login extends Component {
               <h1 className="text-center pb-4 pt-3">
                 <span className="text-primary">
                   <i className="fas fa-lock" />
-                  &nbsp;Login
+                  &nbsp;Register
                 </span>
               </h1>
               {message && <Alert message={message} messageType={messageType} />}
@@ -81,7 +86,7 @@ class Login extends Component {
                     />
                     <input
                       type="submit"
-                      value="Login"
+                      value="Sign up"
                       className="btn btn-primary btn-block mt-4"
                     />
                   </div>
@@ -95,4 +100,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default Register;

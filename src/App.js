@@ -11,6 +11,7 @@ import EditClient from "./containers/clients/EditClient.container";
 import ClientDetails from "./containers/clients/ClientDetails.container";
 import Settings from "./containers/settings/Settings.container";
 import Login from "./containers/auth/Login.container";
+import Register from "./containers/auth/Register.container";
 import About from "./components/layout/About";
 import NotFound from "./components/common/NotFound";
 
@@ -28,6 +29,7 @@ class App extends Component {
               <Route exact path="/client/edit/:id" component={UserIsAuthenticated(EditClient)} />
               <Route exact path="/settings" component={UserIsAuthenticated(Settings)} />
               <Route exact path="/login" component={UserIsNotAuthenticated(Login)} />
+              <Route exact path="/signup" component={UserIsNotAuthenticated(Register)} />
               <Route exact path="/about" component={About} />
               <Route path="*" component={NotFound} />
             </Switch>

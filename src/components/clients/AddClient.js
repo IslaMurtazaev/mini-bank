@@ -13,7 +13,6 @@ class AddClient extends Component {
 
   static propTypes = {
     firestore: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired,
     disableBalanceOnAdd: PropTypes.bool.isRequired
   };
 

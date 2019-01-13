@@ -7,7 +7,6 @@ const Settings = props => {
     disableBalanceOnAdd,
     disableBalanceOnEdit,
     allowRegistration,
-    auth,
     actions
   } = props;
 
