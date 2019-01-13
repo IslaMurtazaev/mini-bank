@@ -12,14 +12,34 @@ const INITIAL_STATE = {
   allowRegistration: false
 };
 
+if (localStorage.getItem("settings") === null) {
+  localStorage.setItem("settings", JSON.stringify(INITIAL_STATE));
+}
+const STATE = { ...JSON.parse(localStorage.getItem("settings")) };
+
 export default createReducer(
   {
-    [TOGGLE_DISABLE_BALANCE_ON_ADD]: state =>
-      merge(state, { disableBalanceOnAdd: !state.disableBalanceOnAdd }),
-    [TOGGLE_DISABLE_BALANCE_ON_EDIT]: state =>
-      merge(state, { disableBalanceOnEdit: !state.disableBalanceOnEdit }),
-    [TOGGLE_ALLOW_REGISTRATION]: state =>
-      merge(state, { allowRegistration: !state.allowRegistration })
+    [TOGGLE_DISABLE_BALANCE_ON_ADD]: state => {
+      const newState = merge(state, {
+        disableBalanceOnAdd: !state.disableBalanceOnAdd
+      });
+      localStorage.setItem("settings", JSON.stringify(newState));
+      return newState;
+    },
+    [TOGGLE_DISABLE_BALANCE_ON_EDIT]: state => {
+      const newState = merge(state, {
+        disableBalanceOnEdit: !state.disableBalanceOnEdit
+      });
+      localStorage.setItem("settings", JSON.stringify(newState));
+      return newState;
+    },
+    [TOGGLE_ALLOW_REGISTRATION]: state => {
+      const newState = merge(state, {
+        allowRegistration: !state.allowRegistration
+      });
+      localStorage.setItem("settings", JSON.stringify(newState));
+      return newState;
+    }
   },
-  INITIAL_STATE
+  STATE
 );
