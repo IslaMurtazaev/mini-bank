@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { compose } from "redux";
-import { connect } from "react-redux";
-import { firestoreConnect } from "react-redux-firebase";
 
 import Spinner from "../common/Spinner";
 
@@ -89,9 +86,4 @@ class Clients extends Component {
   }
 }
 
-export default compose(
-  firestoreConnect([{ collection: "clients" }]),
-  connect((state, props) => ({
-    clients: state.firestore.ordered.clients
-  }))
-)(Clients);
+export default Clients;

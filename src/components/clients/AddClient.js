@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { firestoreConnect } from "react-redux-firebase";
 
 class AddClient extends Component {
   state = {
@@ -112,4 +111,4 @@ class AddClient extends Component {
   }
 }
 
-export default firestoreConnect()(AddClient);
+export default AddClient;

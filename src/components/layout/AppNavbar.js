@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { compose } from "redux";
-import { connect } from "react-redux";
-import { firebaseConnect } from "react-redux-firebase";
 
 class AppNavbar extends Component {
   static propTypes = {
@@ -90,9 +87,4 @@ class AppNavbar extends Component {
   }
 }
 
-export default compose(
-  firebaseConnect(),
-  connect((state, props) => ({
-    auth: state.firebase.auth
-  }))
-)(AppNavbar);
+export default AppNavbar;

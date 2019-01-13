@@ -3,12 +3,12 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./assets/App.css"
 
 import { UserIsAuthenticated, UserIsNotAuthenticated } from "./helpers/auth";
-import AppNavbar from "./components/layout/AppNavbar";
+import AppNavbar from "./containers/layout/AppNavbar.container";
 import Footer from "./components/layout/Footer";
 import Dashboard from "./components/layout/Dashboard";
-import AddClient from "./components/clients/AddClient";
-import EditClient from "./components/clients/EditClient";
-import ClientDetails from "./components/clients/ClientDetails";
+import AddClient from "./containers/clients/AddClient.container";
+import EditClient from "./containers/clients/EditClient.container";
+import ClientDetails from "./containers/clients/ClientDetails.container";
 import Settings from "./containers/settings/Settings.container";
 import Login from "./containers/auth/Login.container";
 import About from "./components/layout/About";
