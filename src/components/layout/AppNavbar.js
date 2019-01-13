@@ -27,7 +27,7 @@ class AppNavbar extends Component {
     const { firebase } = this.props;
 
     firebase.logout();
-  }
+  };
 
   render() {
     const { isAuthenticated } = this.state;
@@ -50,11 +50,18 @@ class AppNavbar extends Component {
           <div className="collapse navbar-collapse" id="navbarMain">
             <ul className="navbar-nav mr-auto">
               {isAuthenticated && (
-                <li className="nav-item">
-                  <Link to="/" className="nav-link">
-                    Dashboard
-                  </Link>
-                </li>
+                <React.Fragment>
+                  <li className="nav-item">
+                    <Link to="/" className="nav-link">
+                      Dashboard
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to="/settings" className="nav-link">
+                      Settings
+                    </Link>
+                  </li>
+                </React.Fragment>
               )}
               <li className="nav-item">
                 <Link to="/about" className="nav-link">

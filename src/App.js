@@ -9,6 +9,7 @@ import Dashboard from "./components/layout/Dashboard";
 import AddClient from "./components/clients/AddClient";
 import EditClient from "./components/clients/EditClient";
 import ClientDetails from "./components/clients/ClientDetails";
+import Settings from "./containers/settings/Settings.container";
 import Login from "./containers/auth/Login.container";
 import About from "./components/layout/About";
 import NotFound from "./components/common/NotFound";
@@ -19,12 +20,13 @@ class App extends Component {
       <Router>
         <div className="App">
           <AppNavbar />
-          <div className="container">
+          <div className="main-wrapper container">
             <Switch>
               <Route exact path="/" component={UserIsAuthenticated(Dashboard)} />
               <Route exact path="/client/add" component={UserIsAuthenticated(AddClient)} />
               <Route exact path="/client/:id" component={UserIsAuthenticated(ClientDetails)} />
               <Route exact path="/client/edit/:id" component={UserIsAuthenticated(EditClient)} />
+              <Route exact path="/settings" component={UserIsAuthenticated(Settings)} />
               <Route exact path="/login" component={UserIsNotAuthenticated(Login)} />
               <Route exact path="/about" component={About} />
               <Route path="*" component={NotFound} />

@@ -1,13 +1,12 @@
 import { bindActionCreators, compose } from "redux";
 import { firebaseConnect } from "react-redux-firebase";
 import { connect } from "react-redux";
+
 import Login from "../../components/auth/Login";
 import notifyActions from "../../actions/notifyActions";
 
 function mapStateToProps(state, ownProps) {
-  return {
-    ...state.notify
-  };
+  return state.notify;
 }
 
 function mapDispatchToProps(dispatch) {
