@@ -8,7 +8,8 @@ export default compose(
   firestoreConnect(props => [
     { collection: "clients", storeAs: "client", doc: props.match.params.id }
   ]),
-  connect(({ firestore: { ordered } }, props) => ({
-    client: ordered.client && ordered.client[0]
-  }))
+  connect(({ firestore: { ordered }, settings: { disableBalanceOnEdit } }, props) => ({
+    client: ordered.client && ordered.client[0],
+    disableBalanceOnEdit
+  }), null)
 )(EditClient);

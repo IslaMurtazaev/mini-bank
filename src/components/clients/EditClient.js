@@ -17,7 +17,8 @@ class EditClient extends Component {
   static propTypes = {
     firestore: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
-    client: PropTypes.object,
+    disableBalanceOnEdit: PropTypes.bool.isRequired,
+    client: PropTypes.object
   };
 
   onSubmit = e => {
@@ -40,7 +41,7 @@ class EditClient extends Component {
   };
 
   render() {
-    const { client } = this.props;
+    const { client, disableBalanceOnEdit } = this.props;
 
     if (client) {
       return (
@@ -105,6 +106,7 @@ class EditClient extends Component {
                   name="balance"
                   ref={this.balanceInput}
                   defaultValue={client.balance}
+                  disabled={disableBalanceOnEdit}
                 />
 
                 <br />

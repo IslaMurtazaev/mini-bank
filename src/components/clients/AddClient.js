@@ -11,13 +11,10 @@ class AddClient extends Component {
     balance: 0
   };
 
-  static PropTypes = {
-    firestore: PropTypes.shape({
-      add: PropTypes.func.isRequired
-    }).isRequired,
-    history: PropTypes.shape({
-      push: PropTypes.func.isRequired
-    }).isRequired
+  static propTypes = {
+    firestore: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
+    disableBalanceOnAdd: PropTypes.bool.isRequired
   };
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
@@ -33,6 +30,8 @@ class AddClient extends Component {
   };
 
   render() {
+    const { disableBalanceOnAdd } = this.props;
+
     return (
       <div>
         <div className="row">
@@ -95,6 +94,7 @@ class AddClient extends Component {
                 name="balance"
                 onChange={this.onChange}
                 value={this.state.balance}
+                disabled={disableBalanceOnAdd}
               />
 
               <br />
