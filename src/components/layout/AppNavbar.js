@@ -5,7 +5,8 @@ import PropTypes from "prop-types";
 class AppNavbar extends Component {
   static propTypes = {
     firebase: PropTypes.object.isRequired,
-    auth: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired,
+    allowRegistration: PropTypes.bool.isRequired
   };
 
   state = {
@@ -28,7 +29,7 @@ class AppNavbar extends Component {
 
   render() {
     const { isAuthenticated } = this.state;
-    const { auth } = this.props;
+    const { auth, allowRegistration } = this.props;
 
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
@@ -77,6 +78,20 @@ class AppNavbar extends Component {
                   <a href="#!" className="nav-link" onClick={this.onLogout}>
                     Logout
                   </a>
+                </li>
+              </ul>
+            )}
+            {!isAuthenticated && allowRegistration && (
+              <ul className="navbar-nav ml-auto">
+                <li className="nav-item">
+                  <Link to="/login" className="nav-link">
+                    Log in
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/signup" className="nav-link">
+                    Sign up
+                  </Link>
                 </li>
               </ul>
             )}
