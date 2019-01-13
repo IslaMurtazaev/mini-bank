@@ -11,6 +11,6 @@
   display: block;
 }
 
-.footer {
-  margin-top: 10%;
+.main-wrapper {
+  min-height: 485px;
 }

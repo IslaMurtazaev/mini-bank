@@ -1,16 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const About = () => {
   return (
     <div className="row">
-      <div>
-        <div className="col-md-6">
-          <Link to="/" className="btn btn-link">
-            <i className="fas fa-arrow-circle-left" /> Back to Dashboard{" "}
-          </Link>
-        </div>
-      </div>
       <div className="col-md-10 mx-auto jumbotron">
         <h1 className="primary-text text-center">About</h1>
         <h6 className="secondary-text text-center mb-4">
