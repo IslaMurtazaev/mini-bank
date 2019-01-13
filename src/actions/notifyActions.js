@@ -1,15 +1,15 @@
-import { NOTIFY_USER, REMOVE_MESSAGE } from "./types";
+export const NOTIFY_USER = "NOTIFY_USER";
+export const REMOVE_MESSAGE = "REMOVE_MESSAGE";
 
-export const notifyUser = (message, messageType) => {
-  return {
-    type: NOTIFY_USER,
-    message,
-    messageType
-  };
-};
-
-export const removeMessage = () => {
-  return {
-    type: REMOVE_MESSAGE
-  }
+function notifyUser(message, messageType) {
+  return { type: NOTIFY_USER, message, messageType };
 }
+
+function removeMessage() {
+  return { type: REMOVE_MESSAGE };
+}
+
+export default {
+  notifyUser,
+  removeMessage
+};

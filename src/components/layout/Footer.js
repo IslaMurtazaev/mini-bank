@@ -8,7 +8,7 @@ const Footer = () => {
         <p className="text-center">
           Project of <strong>CS 203: Intro to Web Technologies</strong>.
         </p>
-        <div class="footer-copyright text-center text-secondary">
+        <div className="footer-copyright text-center text-secondary">
           © 2018 Copyright: &nbsp;
           <Link to="http://www.iaau.edu.kg/" className="btn-link">
             Computer Science department, AIU.

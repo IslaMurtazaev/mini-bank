@@ -1,21 +1,18 @@
-import { NOTIFY_USER, REMOVE_MESSAGE } from "../actions/types";
+import merge from "xtend";
+import createReducer from "./create-reducer";
+import { NOTIFY_USER, REMOVE_MESSAGE } from "../actions/notifyActions";
 
-const initialState = {
+const INITIAL_STATE = {
   message: null,
   messageType: null
 };
 
-export default function(state = initialState, action) {
-  switch (action.type) {
-    case NOTIFY_USER:
-      return {
-        ...state,
+export default createReducer({
+    [NOTIFY_USER]: (state, action) => merge(state, {
         message: action.message,
         messageType: action.messageType
-      };
-    case REMOVE_MESSAGE:
-      return initialState;
-    default:
-      return state;
-  }
-}
+      }),
+    [REMOVE_MESSAGE]: state => merge(state, INITIAL_STATE)
+  },
+  INITIAL_STATE
+);

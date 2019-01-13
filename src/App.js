@@ -9,7 +9,7 @@ import Dashboard from "./components/layout/Dashboard";
 import AddClient from "./components/clients/AddClient";
 import EditClient from "./components/clients/EditClient";
 import ClientDetails from "./components/clients/ClientDetails";
-import Login from "./components/auth/Login";
+import Login from "./containers/auth/Login.container";
 import About from "./components/layout/About";
 import NotFound from "./components/common/NotFound";
 

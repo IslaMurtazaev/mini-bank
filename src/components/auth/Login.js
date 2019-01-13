@@ -1,14 +1,21 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { compose } from "redux";
-import { connect } from "react-redux";
-import { firebaseConnect } from "react-redux-firebase";
-import { notifyUser, removeMessage } from "../../actions/notifyActions";
 import Alert from "../common/Alert";
 
 class Login extends Component {
   static propTypes = {
-    firebase: PropTypes.object.isRequired
+    firebase: PropTypes.shape({
+      login: PropTypes.func.isRequired
+    }),
+    history: PropTypes.shape({
+      push: PropTypes.func.isRequired
+    }),
+    actions: PropTypes.shape({
+      notifyUser: PropTypes.func.isRequired,
+      removeMessage: PropTypes.func.isRequired
+    }),
+    message: PropTypes.string,
+    messageType: PropTypes.string
   };
 
   state = {
@@ -22,22 +29,19 @@ class Login extends Component {
     e.preventDefault();
 
     const { email, password } = this.state;
-    const { firebase, history, notifyUser, removeMessage } = this.props;
+    const { firebase, history, actions } = this.props;
 
     firebase
-      .login({
-        email,
-        password
-      })
+      .login({ email, password })
       .then(() => {
-        removeMessage();
+        actions.removeMessage();
         history.push("/");
       })
-      .catch(err => notifyUser("Wrong credentials", "error"));
+      .catch(err => actions.notifyUser("Wrong credentials", "error"));
   };
 
   render() {
-    const { message, messageType } = this.props.notify;
+    const { message, messageType } = this.props;
 
     return (
       <div className="row">
@@ -88,12 +92,4 @@ class Login extends Component {
   }
 }
 
-export default compose(
-  firebaseConnect(),
-  connect(
-    (state, props) => ({
-      notify: state.notify
-    }),
-    { notifyUser, removeMessage }
-  )
-)(Login);
+export default Login;
