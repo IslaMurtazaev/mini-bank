@@ -15,10 +15,10 @@ class AddClient extends Component {
   static PropTypes = {
     firestore: PropTypes.shape({
       add: PropTypes.func.isRequired
-    }),
+    }).isRequired,
     history: PropTypes.shape({
       push: PropTypes.func.isRequired
-    })
+    }).isRequired
   };
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });

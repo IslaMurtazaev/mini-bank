@@ -64,7 +64,7 @@ Settings.propTypes = {
     toggleDisableBalanceOnAdd: PropTypes.func.isRequireds,
     toggleDisableBalanceOnEdit: PropTypes.func.isRequireds,
     toggleAllowRegistration: PropTypes.func.isRequireds
-  })
+  }).isRequired
 };
 
 export default Settings;

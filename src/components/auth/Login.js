@@ -6,14 +6,14 @@ class Login extends Component {
   static propTypes = {
     firebase: PropTypes.shape({
       login: PropTypes.func.isRequired
-    }),
+    }).isRequired,
     history: PropTypes.shape({
       push: PropTypes.func.isRequired
-    }),
+    }).isRequired,
     actions: PropTypes.shape({
       notifyUser: PropTypes.func.isRequired,
       removeMessage: PropTypes.func.isRequired
-    }),
+    }).isRequired,
     message: PropTypes.string,
     messageType: PropTypes.string
   };
