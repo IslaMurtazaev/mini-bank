@@ -21,7 +21,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <AppNavbar />
-          <div className="main-wrapper container">
+          <div className="container">
             <Switch>
               <Route exact path="/" component={UserIsAuthenticated(Dashboard)} />
               <Route exact path="/client/add" component={UserIsAuthenticated(AddClient)} />

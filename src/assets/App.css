@@ -11,6 +11,8 @@
   display: block;
 }
 
-.main-wrapper {
-  min-height: 485px;
+footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
 }
