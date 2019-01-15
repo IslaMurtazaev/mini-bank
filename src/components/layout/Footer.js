@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -10,9 +9,9 @@ const Footer = () => {
         </p>
         <div className="footer-copyright text-center text-secondary">
           © 2018 Copyright: &nbsp;
-          <Link to="http://www.iaau.edu.kg/" className="btn-link">
+          <a href="http://www.iaau.edu.kg/" className="btn-link">
             Computer Science department, AIU.
-          </Link>
+          </a>
         </div>
       </div>
     </footer>
